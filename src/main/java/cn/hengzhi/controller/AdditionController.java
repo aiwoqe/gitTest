@@ -12,9 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author aiwoqe
+ * @Type AdditionController
+ * @Desc
+ * @date 2020年09月24日
+ * @Version V1.0
+ */
 @Controller
 @RequestMapping("/account")
-public class ConflictController {
+public class AdditionController {
     @Autowired
     AccountService accountService;
 
@@ -24,7 +31,6 @@ public class ConflictController {
         // 调用service的方法
         List<Account> list = accountService.findAll();
         model.addAttribute("list",list);
-        System.out.println("冲突");
         return "list";
     }
     /**
@@ -36,7 +42,6 @@ public class ConflictController {
     public void save(Account account, HttpServletRequest request, HttpServletResponse response) throws IOException {
         accountService.saveAccount(account);
         response.sendRedirect(request.getContextPath()+"/account/findAll");
-        System.out.println("冲突");
         return;
     }
 }
