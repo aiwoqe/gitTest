@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--引入映射配置文件-->
+<mapper namespace="cn.hengzhi.mapper.AccountMapper">
+    <!--为返回list设置了resultMap-->
+    <resultMap type="cn.hengzhi.entity.Account" id="AccountResult">
+        <id column="id"   property="id"/>
+        <result column="name"   property="name"/>
+        <result column="money"   property="money"/>
+    </resultMap>
+    <!--save-->
+    <insert id="saveAccount" parameterType="account">/*此处id作为唯一标识，与mapper接口中的方法名对应*/
+        INSERT INTO account(name,money) VALUES (#{name},#{money})
+   </insert>
+    <select id="findAll" resultMap="AccountResult" parameterType="String">
+        select * from account
+    </select>
+</mapper>
