@@ -24,7 +24,9 @@ public class ConflictController {
         // 调用service的方法
         List<Account> list = accountService.findAll();
         model.addAttribute("list",list);
+
         System.out.println("冲突");
+
         return "list";
     }
     /**
@@ -36,7 +38,9 @@ public class ConflictController {
     public void save(Account account, HttpServletRequest request, HttpServletResponse response) throws IOException {
         accountService.saveAccount(account);
         response.sendRedirect(request.getContextPath()+"/account/findAll");
+
         System.out.println("冲突");
+
         return;
     }
 }
